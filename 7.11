@@ -1,0 +1,148 @@
+Задача 1
+
+HTML
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Домашняя библиотека</title>
+  <link rel="stylesheet" href="7.11.css">
+  <style> 
+  </style>
+</head>
+<body>
+  <h1 class="heading">Домашняя библиотека</h1>
+  <div class="controls">
+    <button id="addBook" class="addBook">Добавить книгу</button>
+    <button id="search" class="search">Найти</button>
+  </div>
+  <ul id="bookList" class="bookList"></ul>
+  <script src="7.11.js"></script>
+</body>
+</html>
+
+CSS
+.heading {
+    font-size: 29px;
+    font-weight: 600;
+}
+
+.addBook {
+    background-color: green;
+    color: white;
+    border: green;
+    height: 35px;
+    width: 175px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.search {
+    background-color: blue;
+    color: white;
+    border: blue;
+    height: 35px;
+    width: 75px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.bookList {
+    font-size: 17px;
+    list-style: none;
+    padding-left: 0;
+    font-weight: 500;
+}
+
+.bookList li::before{
+    content: counter(list-item) ") ";
+}
+
+.bookList li.highlighted {
+    margin-left: 15px;
+    padding: 10px 15px;
+    border-left: 350px solid yellow;
+    text-indent: -360px;
+}
+
+JS
+let books = [ "Мастер и Маргарита",
+              "Преступление и наказание",
+              "Война и мир",
+              "1984",
+              "Гарри Поттер и философский камень" ];
+
+const bookListElement = document.getElementById('bookList');
+const addBookBtn = document.getElementById('addBook');
+const searchBtn = document.getElementById('search');
+
+function renderBookList() {
+  bookListElement.innerHTML = '';
+  
+  if (books.length === 0) {
+    const emptyMessage = document.createElement('div');
+    emptyMessage.className = 'empty-message';
+    emptyMessage.textContent = 'Ваша библиотека пуста. Добавьте первую книгу!';
+    bookListElement.appendChild(emptyMessage);
+    return;
+  }
+
+  books.forEach(book => {
+    const listItem = document.createElement('li');
+    listItem.textContent = book;
+    bookListElement.appendChild(listItem);
+  });
+}
+
+function addBook() {
+  const bookTitle = prompt('Введите название книги:');
+  
+  if (bookTitle === null) {
+    return; 
+  }
+  
+  if (bookTitle.trim() === '') {
+    alert('Название книги не введено!');
+    return;
+  }
+  
+  books.push(bookTitle);
+  renderBookList();
+}
+
+function searchBook() {
+  const searchTerm = prompt('Введите название книги для поиска:');
+  
+  if (searchTerm === null) {
+    return;
+  }
+  
+  if (searchTerm.trim() === '') {
+    alert('Название для поиска не введено!');
+    return;
+  }
+  
+  const allBooks = bookListElement.querySelectorAll('li');
+  allBooks.forEach(book => book.classList.remove('highlighted'));
+  
+  const foundIndex = books.findIndex(book => 
+    book.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+  
+  if (foundIndex !== -1) {
+    allBooks[foundIndex].classList.add('highlighted');
+    allBooks[foundIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+  } 
+  
+  else {
+    alert('Книга не найдена!');
+  }
+}
+
+addBookBtn.addEventListener('click', addBook);
+searchBtn.addEventListener('click', searchBook);
+
+renderBookList();
