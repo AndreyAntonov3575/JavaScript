@@ -22,6 +22,7 @@ HTML
 </body>
 </html>
 
+
 CSS
 .heading {
     font-size: 29px;
@@ -67,6 +68,7 @@ CSS
     border-left: 350px solid yellow;
     text-indent: -360px;
 }
+
 
 JS
 let books = [ "Мастер и Маргарита",
@@ -146,3 +148,29 @@ addBookBtn.addEventListener('click', addBook);
 searchBtn.addEventListener('click', searchBook);
 
 renderBookList();
+
+
+
+
+
+Задача 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
