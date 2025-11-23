@@ -154,7 +154,138 @@ renderBookList();
 
 
 Задача 2
+HTML
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Рост учеников</title>
+  <link rel="stylesheet" href="7.11.css">
+</head>
+<body>
+  <h1 class="heading">Рост учеников</h1>
+  <div class="controls">
+    <button id="addHeight" class="addHeight">Добавить рост</button>
+    <button id="filter" class="filter">Фильтровать</button>
+  </div>
+  <ul id="heightList" class="heightList"></ul>
+  <script src="7.11.js"></script>
+</body>
+</html>
 
+CSS
+.heading {
+    font-size: 29px;
+    font-weight: 600;
+}
+
+.addHeight {
+    background-color: green;
+    color: white;
+    border: green;
+    height: 35px;
+    width: 150px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.filter {
+    background-color: orange;
+    color: white;
+    border: orange;
+    height: 35px;
+    width: 105px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.heightList {
+    font-size: 17px;
+    list-style: none;
+    padding-left: 0;
+    font-weight: 500;
+}
+
+.heightList li::before{
+    content: counter(list-item) ") ";
+}
+
+
+JS
+let heights = [ "164",
+              "157",
+              "160",
+              "143",
+              "170" ];
+
+const heightListElement = document.getElementById('heightList');
+const addHeightBtn = document.getElementById('addHeight');
+const filterBtn = document.getElementById('filter');
+
+function renderHeightList() {
+  heightListElement.innerHTML = '';
+
+  if (heights.length === 0) {
+    const emptyMessage = document.createElement('div');
+    emptyMessage.className = 'empty-message';
+    emptyMessage.textContent = 'Список роста пуст. Добавьте первый рост!';
+    heightListElement.appendChild(emptyMessage);
+    return;
+  }
+
+  heights.forEach(height => {
+    const listItem = document.createElement('li');
+    listItem.textContent = height;
+    heightListElement.appendChild(listItem);
+  });
+}
+
+function addHeight() {
+  const heightInput = prompt('Введите рост ученика:');
+  
+  if (heightInput === null) {
+    return; 
+  }
+  
+  if (heightInput.trim() === '') {
+    alert('Рост не введён!');
+    return;
+  }
+  
+  heights.push(heightInput);
+  renderHeightList();
+}
+
+function filterHeight() {
+  const minHeight = prompt('Введите минимальный рост');
+  
+  if (minHeight === null) {
+    return;
+  }
+  
+  if (minHeight.trim() === '') {
+    renderHeightList();
+    return;
+  }
+  
+  const allHeights = heightListElement.querySelectorAll('li');
+  const filteredHeights = heights.filter(height => parseInt(height) >= parseInt(minHeight));
+
+  heightListElement.innerHTML = '';
+  filteredHeights.forEach(height => {
+    const listItem = document.createElement('li');
+    listItem.textContent = height;
+    heightListElement.appendChild(listItem);
+  });
+}
+
+addHeightBtn.addEventListener('click', addHeight);
+filterBtn.addEventListener('click', filterHeight);
+
+renderHeightList();
 
 
 
