@@ -291,17 +291,107 @@ renderHeightList();
 
 
 
+Задача 3
+HTML
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Корзина покупателя</title>
+  <link rel="stylesheet" href="7.11.css">
+</head>
+<body>
+  <h1 class="heading">Корзина покупателя</h1>
+  <div class="controls">
+    <button id="addProduct" class="addProduct">Добавить товар</button>
+  </div>
+  <ul id="productList" class="productList"></ul>
+  <script src="7.11.js"></script>
+</body>
+</html>
 
 
+CSS
+.heading {
+    font-size: 29px;
+    font-weight: 600;
+}
+
+.addProduct {
+    background-color: green;
+    color: white;
+    border: green;
+    height: 35px;
+    width: 150px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.productList {
+    font-size: 17px;
+    list-style: none;
+    padding-left: 0;
+    font-weight: 500;
+}
+
+.productList li::before{
+    content: counter(list-item) ") ";
+}
 
 
+JS
+let products = [ "Арбуз",
+              "Книга",
+              "Кофе",
+              "Макароны",
+              "Молоко",
+              "Сахар",
+              "Яблоки" ];
 
+const productListElement = document.getElementById('productList');
+const addProductBtn = document.getElementById('addProduct');
 
+function renderProductList() {
+  productListElement.innerHTML = '';
 
+  const sortedProducts = [...products].sort();
 
+  if (sortedProducts.length === 0) {
+    const emptyMessage = document.createElement('div');
+    emptyMessage.className = 'empty-message';
+    emptyMessage.textContent = 'Корзина пуста. Добавьте первый товар!';
+    productListElement.appendChild(emptyMessage);
+    return;
+  }
 
+  sortedProducts.forEach(product => {
+    const listItem = document.createElement('li');
+    listItem.textContent = product;
+    productListElement.appendChild(listItem);
+  });
+}
 
+function addProduct() {
+  const productInput = prompt('Введите название товара');
+  
+  if (productInput === null) {
+    return; 
+  }
+  
+  if (productInput.trim() === '') {
+    alert('Название товара не введено!');
+    return;
+  }
+  
+  products.push(productInput);
+  renderProductList();
+}
 
+addProductBtn.addEventListener('click', addProduct);
+
+renderProductList();
 
 
 
