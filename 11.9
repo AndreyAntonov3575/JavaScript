@@ -298,5 +298,215 @@ interestsInputs.forEach(input => {
 
 Задача 2
 
+HTML
 
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Калькулятор стоимости доставки</title>
+  <link rel="stylesheet" href="11.9.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Калькулятор стоимости доставки</h1>
+        
+        <form id="deliveryForm">
+            <div class="form-group">
+                <label>Название товара:</label>
+                <input type="text" id="productName">
+                <div class="error" id="nameError">Заполните это поле.</div>
+            </div>
+            
+            <div class="form-group">
+                <label>Вес товара (кг):</label>
+                <input type="number" id="productWeight">
+                <div class="error" id="weightError">Заполните это поле.</div>
+            </div>
+            
+            <div class="form-group">
+                <label>Расстояние доставки (км):</label>
+                <input type="number" id="deliveryDistance">
+                <div class="error" id="distanceError">Заполните это поле.</div>
+            </div>
+            
+            <button type="submit">Добавить товар</button>
+        </form>
+
+        <div class="value-error" id="valueError">
+            Пожалуйста, введите корректные значения для веса и расстояния.
+        </div>
+        
+        <table class="product-table">
+            <thead>
+                <tr>
+                    <th>Название товара</th>
+                    <th>Вес (кг)</th>
+                    <th>Расстояние (км)</th>
+                    <th>Стоимость доставки</th>
+                </tr>
+            </thead>
+            <tbody id="productsTableBody">
+                <!-- Здесь будут добавляться товары -->
+            </tbody>
+        </table>
+    </div>
+    <script src="11.9.js"></script>
+</body>
+</html>
+
+
+CSS
+
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+.error {
+    font-size: 13px;
+    margin-top: 5px;
+    display: none;
+}
+
+div {
+    margin-bottom: 15px;
+}
+
+#productName:focus,
+#productWeight:focus,
+#deliveryDistance:focus {
+    border-color: #0b83d3;
+    outline: none;
+}
+
+.value-error {
+    color: red;
+    font-size: 14px;
+    margin: 5px 0;
+    padding: 10px 0;
+    text-align: left;
+    display: none;
+}
+
+
+JS
+
+const form = document.getElementById('deliveryForm');
+const tableBody = document.getElementById('productsTableBody');
+const valueError = document.getElementById('valueError');
+
+const nameInput = document.getElementById('productName');
+const weightInput = document.getElementById('productWeight');
+const distanceInput = document.getElementById('deliveryDistance');
+
+const nameError = document.getElementById('nameError');
+const weightError = document.getElementById('weightError');
+const distanceError = document.getElementById('distanceError');
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    resetErrors();
+    
+    let isValid = true;
+    let hasNegativeValues = false;
+    
+    if (!nameInput.value.trim()) {
+        showError(nameError);
+        isValid = false;
+    }
+    
+    const weight = parseFloat(weightInput.value);
+    if (!weightInput.value || weight <= 0) {
+        showError(weightError);
+        isValid = false;
+        if (weight < 0) {
+            hasNegativeValues = true;
+        }
+    }
+    
+    const distance = parseFloat(distanceInput.value);
+    if (!distanceInput.value || distance <= 0) {
+        showError(distanceError);
+        isValid = false;
+        if (distance < 0) {
+            hasNegativeValues = true;
+        }
+    }
+    
+    if (hasNegativeValues) {
+        valueError.style.display = 'block';
+    }
+    
+    if (isValid) {
+        addProductToTheTable(nameInput.value.trim(), weight, distance);
+        form.reset();
+    }
+});
+
+function showError(errorElement) {
+    errorElement.style.display = 'block';
+}
+
+function resetErrors() {
+    nameError.style.display = 'none';
+    weightError.style.display = 'none';
+    distanceError.style.display = 'none';
+    valueError.style.display = 'none';
+}
+
+function addProductToTheTable(name, weight, distance) {
+    const deliveryCost = (weight * distance) / 10;
+    
+    const newRow = document.createElement('tr');
+    
+    newRow.innerHTML = `
+        <td>${name}</td>
+        <td>${weight}</td>
+        <td>${distance}</td>
+        <td>${deliveryCost.toFixed(2)} руб.</td> `;
+    
+    tableBody.appendChild(newRow);
+}
+
+nameInput.addEventListener('input', function() {
+    if (this.value.trim()) {
+        nameError.style.display = 'none';
+    }
+});
+
+weightInput.addEventListener('input', function() {
+    const weight = parseFloat(this.value);
+    if (this.value && weight > 0) {
+        weightError.style.display = 'none';
+    }
+    valueError.style.display = 'none';
+});
+
+distanceInput.addEventListener('input', function() {
+    const distance = parseFloat(this.value);
+    if (this.value && distance > 0) {
+        distanceError.style.display = 'none';
+    }
+    valueError.style.display = 'none';
+});
 
