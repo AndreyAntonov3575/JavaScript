@@ -156,3 +156,78 @@ function removeItem() {
 
 
 Задача 3
+
+HTML
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Страница с ценами</title>
+  <link rel="stylesheet" href="10.8.css">
+</head>
+<body>
+  <div class="container">
+    <ul id="priceList">
+      <li></li>
+    </ul>
+        
+    <div class="buttons">
+        <button class="sort-btn" onclick="sortAscending()">Сортировать по возрастанию</button>
+        <button class="sort-btn" onclick="sortDescending()">Сортировать по убыванию</button>
+    </div>
+  </div>
+  <script src="10.8.js"></script>
+</body>
+</html>
+
+
+CSS
+
+body {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #f5f5f5;
+}
+
+.container {
+    padding: 30px;
+}
+
+ul {
+    padding-left: 40px;
+}
+
+li {
+    font-size: 16px;
+}
+
+
+JS
+
+const prices = [100, 500, 250, 750, 300];
+
+const priceList = document.getElementById('priceList');
+
+function showPrices() {
+    priceList.innerHTML = '';
+    
+    prices.forEach(price => {
+        const listItem = document.createElement('li');
+        listItem.textContent = price;
+        priceList.appendChild(listItem);
+    });
+}
+
+function sortAscending() {
+    prices.sort((a, b) => a - b);
+    showPrices();
+}
+
+function sortDescending() {
+    prices.sort((a, b) => b - a);
+    showPrices();
+}
+
+showPrices();
