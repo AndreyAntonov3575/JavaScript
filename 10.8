@@ -87,3 +87,72 @@ images.forEach(image => {
         fullSizeContainer.appendChild(fullSizeImage);
     });
 });
+
+
+Задача 2
+
+HTML
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Динамическое создание списка</title>
+  <link rel="stylesheet" href="10.8.css">
+</head>
+<body>
+  <div class="container">
+      <ul id="itemList"></ul>
+
+      <div class="buttons">
+          <button class="addButton" onclick="addItem()">Добавить элемент</button>
+          <button class="removeButton" onclick="removeItem()">Удалить элемент</button>
+      </div>
+  </div>
+  <script src="10.8.js"></script>
+</body>
+</html>
+
+
+CSS
+
+body {
+    font-size: 17px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.container {
+    padding: 30px;
+}
+
+ul {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+li {
+    margin: 2px 0;
+    padding: 0px 12px;
+}
+
+JS
+
+const itemList = document.getElementById('itemList');
+
+function addItem() {
+    const newItem = document.createElement('li');
+    newItem.textContent = 'Новый элемент списка';
+    itemList.appendChild(newItem);
+}
+
+function removeItem() {
+    if (itemList.children.length > 0) {
+        itemList.removeChild(itemList.lastElementChild);
+    }
+}
+
+
+Задача 3
