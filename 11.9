@@ -1,0 +1,302 @@
+Задача 1
+
+HTML
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Веб-страница с формой опроса</title>
+  <link rel="stylesheet" href="11.9.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Форма опроса</h1>
+        
+        <form id="surveyForm">
+            <div class="form-group">
+                <label>Имя пользователя:
+                    <input type="text" id="name" placeholder="Введите ваше имя">
+                </label>
+                <div class="error" id="nameError">Заполните это поле</div>
+            </div>
+        
+            <div class="form-group">
+                <label>Email:
+                    <input type="email" id="email" placeholder="Введите ваш email">
+                </label>
+                <div class="error" id="emailError">Заполните это поле</div>
+                <div class="error" id="emailFormatError">Введите адрес e-mail</div>
+            </div>
+        
+            <div class="form-group">
+                <label>Пол:</label>
+                <div class="choice-group">
+                    <div class="choice-option">
+                        <input type="radio" name="gender" value="Мужской">
+                        <label>Мужской</label>
+                    </div>
+                    <div class="choice-option">
+                        <input type="radio" name="gender" value="Женский">
+                        <label>Женский</label>
+                    </div>
+                </div>
+                <div class="error" id="genderError">Выберите ваш пол</div>
+            </div>
+        
+            <div class="form-group">
+                <label>Оценка сервиса:
+                    <input type="range" id="rating" min="1" max="10" value="5">
+                </label>
+            </div>
+        
+            <div class="form-group">
+                <label>Интересы пользователя:</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="interests" value="Спорт">
+                        <label>Спорт</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="interests" value="Музыка">
+                        <label>Музыка</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="interests" value="Путешествия">
+                        <label>Путешествия</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="interests" value="Кино">
+                        <label>Кино</label>
+                    </div>
+                </div>
+                <div class="error" id="interestsError">Выберите хотя бы один интерес</div>
+            </div>
+        
+            <div class="form-group">
+                <label>Дополнительные комментарии:
+                    <textarea id="comments" rows="4" placeholder="Введите ваши комментарии"></textarea>
+                </label>
+            </div>
+        
+            <button type="submit">Отправить</button>
+        </form>
+
+        <div class="results" id="results">
+            <h2>Данные пользователя:</h2>
+            <div class="result-item">
+                <span class="result-label">Имя пользователя:</span> <span id="resultName"></span>
+            </div>
+            <div class="result-item">
+                <span class="result-label">Email:</span> <span id="resultEmail"></span>
+            </div>
+            <div class="result-item">
+                <span class="result-label">Пол:</span> <span id="resultGender"></span>
+            </div>
+            <div class="result-item">
+                <span class="result-label">Оценка сервиса:</span> <span id="resultRating"></span>
+            </div>
+            <div class="result-item">
+                <span class="result-label">Интересы:</span> <span id="resultInterests"></span>
+            </div>
+            <div class="result-item">
+                <span class="result-label">Комментарии:</span> <span id="resultComments"></span>
+            </div>
+        </div>
+    </div>
+    <script src="11.9.js"></script>
+</body>
+</html>
+
+
+CSS
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.error {
+    display: none;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.results {
+    display: none;
+    margin-top: 20px;
+}
+
+textarea {
+    width: 100%;
+}
+
+
+JS
+
+const form = document.getElementById('surveyForm');
+const results = document.getElementById('results');
+
+const resultName = document.getElementById('resultName');
+const resultEmail = document.getElementById('resultEmail');
+const resultGender = document.getElementById('resultGender');
+const resultRating = document.getElementById('resultRating');
+const resultInterests = document.getElementById('resultInterests');
+const resultComments = document.getElementById('resultComments');
+
+const nameInput = document.getElementById('name');
+const emailInput = document.getElementById('email');
+const genderInputs = document.querySelectorAll('input[name="gender"]');
+const interestsInputs = document.querySelectorAll('input[name="interests"]');
+
+const nameError = document.getElementById('nameError');
+const emailError = document.getElementById('emailError');
+const emailFormatError = document.getElementById('emailFormatError');
+const genderError = document.getElementById('genderError');
+const interestsError = document.getElementById('interestsError');
+
+const ratingInput = document.getElementById('rating');
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    resetErrors();
+    
+    let isValid = true;
+    
+    const isNameEmpty = !nameInput.value.trim();
+    const isEmailEmpty = !emailInput.value.trim();
+    const isEmailInvalid = !isValidEmail(emailInput.value);
+    
+    if (isNameEmpty) {
+        showError(nameInput, nameError);
+        isValid = false;
+    }
+
+    if (!isNameEmpty && isEmailEmpty) {
+        showError(emailInput, emailError);
+        isValid = false;
+    } else if (!isEmailEmpty && isEmailInvalid) {
+        showError(emailInput, emailFormatError);
+        isValid = false;
+    }
+    
+    let genderSelected = false;
+    genderInputs.forEach(input => {
+        if (input.checked) genderSelected = true;
+    });
+    
+    if (!genderSelected) {
+        showError(null, genderError);
+        isValid = false;
+    }
+    
+    let interestsSelected = false;
+    interestsInputs.forEach(input => {
+        if (input.checked) interestsSelected = true;
+    });
+    
+    if (!interestsSelected) {
+        showError(null, interestsError);
+        isValid = false;
+    }
+    
+    if (isValid) {
+        displayResults();
+    }
+});
+
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+function showError(input, errorElement) {
+    if (input) {
+        input.classList.add('input-error');
+    }
+    errorElement.style.display = 'block';
+}
+
+function resetErrors() {
+    nameInput.classList.remove('input-error');
+    emailInput.classList.remove('input-error');
+    
+    nameError.style.display = 'none';
+    emailError.style.display = 'none';
+    emailFormatError.style.display = 'none';
+    genderError.style.display = 'none';
+    interestsError.style.display = 'none';
+}
+
+function displayResults() {
+    const name = nameInput.value;
+    const email = emailInput.value;
+    
+    let gender = '';
+    genderInputs.forEach(input => {
+        if (input.checked) gender = input.value;
+    });
+    
+    const rating = ratingInput.value;
+    
+    let interests = [];
+    interestsInputs.forEach(input => {
+        if (input.checked) interests.push(input.value);
+    });
+    
+    const comments = document.getElementById('comments').value;
+    
+    resultName.textContent = name;
+    resultEmail.textContent = email;
+    resultGender.textContent = gender;
+    resultRating.textContent = `${rating}/10`;
+    resultInterests.textContent = interests.join(', ');
+    resultComments.textContent = comments;
+    
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth' });
+}
+
+nameInput.addEventListener('input', function() {
+    if (this.value.trim()) {
+        this.classList.remove('input-error');
+        nameError.style.display = 'none';
+    }
+});
+
+emailInput.addEventListener('input', function() {
+    if (this.value.trim()) {
+        this.classList.remove('input-error');
+        emailError.style.display = 'none';
+        emailFormatError.style.display = 'none';
+    }
+});
+
+genderInputs.forEach(input => {
+    input.addEventListener('change', function() {
+        genderError.style.display = 'none';
+    });
+});
+
+interestsInputs.forEach(input => {
+    input.addEventListener('change', function() {
+        let interestsSelected = false;
+        interestsInputs.forEach(input => {
+            if (input.checked) interestsSelected = true;
+        });
+        
+        if (interestsSelected) {
+            interestsError.style.display = 'none';
+        }
+    });
+});
+
+
+
+Задача 2
+
+
+
