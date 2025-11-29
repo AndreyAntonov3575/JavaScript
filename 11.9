@@ -510,3 +510,134 @@ distanceInput.addEventListener('input', function() {
     valueError.style.display = 'none';
 });
 
+
+
+Задача 3
+
+HTML
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Настройка оформления банковской карты</title>
+  <link rel="stylesheet" href="11.9.css">
+</head>
+<body>
+    <h1>Настройка оформления банковской карты</h1>
+    
+    <div class="controls">
+        <div class="form-group">
+            <label for="card-text">Текст на карте:</label>
+            <input type="text" id="card-text" placeholder="Введите текст для карты">
+        </div>
+        
+        <div class="form-group">
+            <label for="card-color">Цвет карты:</label>
+            <select id="card-color">
+                <option value="card-red">Красный</option>
+                <option value="card-blue">Синий</option>
+                <option value="card-green">Зелёный</option>
+            </select>
+        </div>
+    </div>
+    
+    <p id="card" class="card-preview card-red">
+        <span class="card-text">Текст на карте</span>
+    </p>
+    <script src="11.9.js"></script>
+</body>
+</html>
+
+
+CSS
+
+body {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.controls {
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"], select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 16px;
+    border: 2px solid #ddd; 
+}
+
+.card-preview {
+    border-radius: 12px;
+    padding: 30px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.card-text {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.card-red {
+    background: red;
+}
+
+.card-blue {
+    background: blue;
+}
+
+.card-green {
+    background: green;
+}
+
+
+JS
+
+const cardTextInput = document.getElementById('card-text');
+const cardColorSelect = document.getElementById('card-color');
+const cardElement = document.getElementById('card');
+const cardTextElement = document.querySelector('.card-text');
+
+cardTextInput.addEventListener('input', function() {
+    cardTextElement.textContent = this.value || 'Текст на карте';
+});
+
+cardTextInput.addEventListener('focus', function() {
+    this.style.borderColor = '#4a90e2';
+    this.style.backgroundColor = '#f0f8ff';
+});
+
+cardTextInput.addEventListener('blur', function() {
+    this.style.borderColor = '#ddd';
+    this.style.backgroundColor = '';
+});
+
+cardColorSelect.addEventListener('change', function() {
+    cardElement.classList.remove('card-red', 'card-blue', 'card-green');
+    cardElement.classList.add(this.value);
+});
