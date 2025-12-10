@@ -1,0 +1,316 @@
+HTML 
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Доработка функциональности приложения</title> 
+    <link rel="stylesheet" href="14.7.css">
+</head>
+<body>
+    <form id="film-form">
+        <label for="title">Название:</label>
+        <br>
+        <input type="text" id="title" name="title">
+        <br>
+        <label for="genre">Жанр:</label>
+        <br>
+        <input type="text" id="genre" name="genre">
+        <br>
+        <label for="releaseYear">Год:</label>
+        <br>
+        <input type="text" id="releaseYear" name="releaseYear">
+        <br>
+        <input type="checkbox" id="isMatched" name="isMatched">
+        <label for="isMatched">Успели посмотреть?</label>
+        <br>
+        <div class="form-buttons">
+            <button type="submit" id="addButton">Добавить</button>
+            <button type="button" id="updateButton" style="display: none;">Обновить</button>
+            <button type="button" id="cancelButton" style="display: none;">Отменить редактирование</button>
+        </div>
+    </form>
+    
+    <div class="sort-container">
+        <select id="sort-select">
+            <option value="none">Без сортировки</option>
+            <option value="title">Название</option>
+            <option value="genre">Жанр</option>
+            <option value="year">Год</option>
+        </select>
+        <button type="button" id="sortButton">Сортировать</button>
+    </div>
+    
+    <table id="film-table">
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Жанр</th>
+                <th>Год</th>
+                <th>Успели посмотреть?</th>
+                <th>Действие</th>
+            </tr>
+        </thead>
+        <tbody id="film-tbody">
+        </tbody>
+    </table>
+    <script src="14.7.js"></script>
+</body>
+</html>
+
+
+
+CSS
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  padding: 30px;
+  color: #333;
+}
+
+form {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px #999;
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+form input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+form input[type="checkbox"] {
+  margin-bottom: 20px;
+}
+
+form input[type="submit"] {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: 0;
+  border-radius: 5px;
+}
+
+form input[type="submit"]:hover {
+  background-color: #444;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  background-color: #fff;
+  text-align: left;
+  border-collapse: collapse;
+  box-shadow: 0px 0px 5px #999;
+}
+
+th,
+td {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #333;
+  color: #fff;
+}
+
+td {
+  vertical-align: top;
+}
+
+
+
+JS
+
+let isEditing = false;
+let editingIndex = null;
+let currentSort = 'none';
+
+function addFilm() {
+    const title = document.querySelector('#title').value.trim();
+    const genre = document.querySelector('#genre').value.trim();
+    const releaseYear = document.querySelector('#releaseYear').value.trim();
+    const isMatched = document.querySelector('#isMatched').checked;
+
+    if (!title || !genre || !releaseYear) {
+        alert('Необходимо заполнить все поля');
+        return;
+    }
+
+    const film = {
+        title,
+        genre,
+        releaseYear,
+        isMatched,
+    };
+
+    addFilmToLocalStorage(film);
+    renderTable();
+    clearForm();
+}
+
+function updateFilm() {
+    const title = document.querySelector('#title').value.trim();
+    const genre = document.querySelector('#genre').value.trim();
+    const releaseYear = document.querySelector('#releaseYear').value.trim();
+    const isMatched = document.querySelector('#isMatched').checked;
+
+    if (!title || !genre || !releaseYear) {
+        alert('Необходимо заполнить все поля');
+        return;
+    }
+
+    const film = {
+        title,
+        genre,
+        releaseYear,
+        isMatched,
+    };
+
+    const films = JSON.parse(localStorage.getItem('films')) || [];
+    films[editingIndex] = film;
+    localStorage.setItem('films', JSON.stringify(films));
+    
+    renderTable();
+    clearForm();
+    exitEditMode();
+}
+
+function exitEditMode() {
+    isEditing = false;
+    editingIndex = null;
+    
+    document.querySelector('#addButton').style.display = 'inline-block';
+    document.querySelector('#updateButton').style.display = 'none';
+    document.querySelector('#cancelButton').style.display = 'none';
+}
+
+function clearForm() {
+    document.querySelector('#title').value = '';
+    document.querySelector('#genre').value = '';
+    document.querySelector('#releaseYear').value = '';
+    document.querySelector('#isMatched').checked = false;
+}
+
+function cancelEdit() {
+    clearForm();
+    exitEditMode();
+}
+
+function editFilm(index) {
+    const films = JSON.parse(localStorage.getItem('films')) || [];
+    const film = films[index];
+    
+    if (film) {
+        document.querySelector('#title').value = film.title;
+        document.querySelector('#genre').value = film.genre;
+        document.querySelector('#releaseYear').value = film.releaseYear;
+        document.querySelector('#isMatched').checked = film.isMatched;
+        
+        isEditing = true;
+        editingIndex = index;
+        
+        document.querySelector('#addButton').style.display = 'none';
+        document.querySelector('#updateButton').style.display = 'inline-block';
+        document.querySelector('#cancelButton').style.display = 'inline-block';
+    }
+}
+
+function addFilmToLocalStorage(film) {
+    const films = JSON.parse(localStorage.getItem('films')) || [];
+    films.push(film);
+    localStorage.setItem('films', JSON.stringify(films));
+}
+
+function deleteFilm(index) {
+    const films = JSON.parse(localStorage.getItem('films')) || [];
+    films.splice(index, 1);
+    localStorage.setItem('films', JSON.stringify(films));
+    renderTable();
+}
+
+function sortFilms(films, sortType) {
+    if (sortType === 'none') {
+        return films;
+    }
+    
+    const sortedFilms = [...films];
+    
+    sortedFilms.sort((a, b) => {
+        if (sortType === 'title') {
+            return a.title.localeCompare(b.title);
+        } else if (sortType === 'genre') {
+            return a.genre.localeCompare(b.genre);
+        } else if (sortType === 'year') {
+            return parseInt(a.releaseYear) - parseInt(b.releaseYear);
+        }
+        return 0;
+    });
+    
+    return sortedFilms;
+}
+
+function renderTable() {
+    const films = JSON.parse(localStorage.getItem('films')) || [];
+    const filmTableBody = document.querySelector('#film-tbody');
+    
+    const sortedFilms = sortFilms(films, currentSort);
+
+    filmTableBody.innerHTML = "";
+    
+    const indexMap = sortedFilms.map(sortedFilm => 
+        films.findIndex(f => 
+            f.title === sortedFilm.title && 
+            f.genre === sortedFilm.genre && 
+            f.releaseYear === sortedFilm.releaseYear
+        )
+    );
+    
+    sortedFilms.forEach((film, sortedIndex) => {
+        const originalIndex = indexMap[sortedIndex];
+        
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${film.title}</td>
+            <td>${film.genre}</td>
+            <td>${film.releaseYear}</td>
+            <td>${film.isMatched ? "Да" : "Нет"}</td>
+            <td>
+                <div class="action-buttons">
+                    <button class="edit-btn" onclick="editFilm(${originalIndex})">Редактировать</button>
+                    <button class="delete-btn" onclick="deleteFilm(${originalIndex})">Удалить</button>
+                </div>
+            </td>
+        `;
+        filmTableBody.appendChild(row);
+    });
+}
+
+function handleSortButton() {
+    const sortSelect = document.querySelector('#sort-select');
+    currentSort = sortSelect.value;
+    renderTable();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('#addButton').addEventListener('click', addFilm);
+    
+    document.querySelector('#updateButton').addEventListener('click', updateFilm);
+    document.querySelector('#cancelButton').addEventListener('click', cancelEdit);
+    document.querySelector('#sortButton').addEventListener('click', handleSortButton);
+    
+    renderTable();
+});
