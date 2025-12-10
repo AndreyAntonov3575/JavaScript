@@ -119,3 +119,193 @@ document.addEventListener('DOMContentLoaded', function() {
 
 Задание 2
 
+HTML
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма для ввода промокода</title> 
+    <link rel="stylesheet" href="12.8.css">
+</head>
+<body>
+    <h2>Форма для ввода промокода</h2>
+    <div class="container">     
+        <input type="text" class="promocode-input" id="promocodeInput" placeholder="ПРОМОКОД">
+        <button class="button" id="applyButton">Применить</button>
+    </div>
+    <script src="12.8.js"></script>
+</body>
+</html>
+
+
+
+CSS
+
+.container {
+    width: 350px;
+    height: 65px;
+    background-color: #FAEEDD;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.button {
+    font-weight: 900;
+    border-radius: 7px;
+    background-color: #589FFF;
+    border-color: #589FFF;
+    width: 112px;
+    height: 35px;
+}
+
+.promocode-input {
+    height: 35px;
+    border-radius: 7px;
+    border-color: gray;
+    padding-left: 15px;
+}
+
+.promo-success {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-grow: 1;
+    margin-left: 15px;
+}
+
+.promo-code {
+    font-size: 16px;
+    font-weight: 900;
+    color: #2E7D32;
+}
+
+.promo-message {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2E7D32;
+}
+
+
+
+JS
+
+const promocodeObj = {
+ promocode: "PROM50",
+ gift: "Скидка 50%"
+}
+
+function getCookie() {
+   return document.cookie.split('; ').reduce((acc, item) => {
+   const [name, value] = item.split('=')
+   acc[name] = value
+   return acc
+ }, {})
+}
+const cookie = getCookie()
+
+function savePromocodeToCookie() {
+    const date = new Date()
+    date.setTime(date.getTime() + (30 * 24 * 60 * 60 * 1000))
+    const expires = "expires=" + date.toUTCString()
+    document.cookie = "savedPromocode=" + promocodeObj.promocode + ";" + expires + ";path=/"
+}
+
+function removePromocodeFromCookie() {
+    document.cookie = "savedPromocode=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
+}
+
+function hasSavedPromocode() {
+    const cookie = getCookie();
+    return cookie.savedPromocode === promocodeObj.promocode;
+}
+
+function loadPromocodeFromCookie() {
+    if (hasSavedPromocode()) {
+        showPromoSuccess();
+    }
+}
+
+function showPromoSuccess() {
+    const container = document.querySelector('.container');
+    
+    if (!container)
+      return;
+    
+    container.innerHTML = `
+        <div class="promo-success">
+            <div class="promo-code">${promocodeObj.promocode}</div>
+            <div class="promo-message">Промокод применён. ${promocodeObj.gift}</div>
+        </div>
+        <button class="button">Применить</button>`;
+    
+    container.classList.add('success');
+    
+    const newButton = container.querySelector('.button');
+    newButton.addEventListener('click', resetPromoForm);
+
+    savePromocodeToCookie();
+}
+
+function resetPromoForm() {
+    const container = document.querySelector('.container');
+ 
+    if (!container)
+      return;
+    
+    container.innerHTML = `<input type="text" class="promocode-input" placeholder="ПРОМОКОД">
+                            <button class="button">Применить</button>`;
+    
+    container.classList.remove('success');
+    
+    const newButton = container.querySelector('.button');
+    newButton.addEventListener('click', checkPromocode);
+    
+    const input = container.querySelector('.promocode-input');
+    if (input) {
+        input.focus();
+    }
+
+    removePromocodeFromCookie();
+}
+
+function checkPromocode() {
+    const input = document.querySelector('.promocode-input');
+    
+    if (!input)
+      return;
+    
+    const enteredPromo = input.value.trim().toUpperCase();
+    
+    if (enteredPromo === promocodeObj.promocode) {
+        showPromoSuccess();
+    } 
+    else {
+        input.value = '';
+        setTimeout(() => {
+            input.style.color = '';
+        }, 1000);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    loadPromocodeFromCookie();
+
+    const button = document.querySelector('.button');
+    if (button) {
+        button.addEventListener('click', checkPromocode);
+    }
+    
+    const input = document.querySelector('.promocode-input');
+    if (input) {
+        input.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPromocode();
+            }
+        });
+    }
+});
