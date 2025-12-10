@@ -1,0 +1,121 @@
+Задание 1
+
+HTML
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Всплывающее окно</title> 
+    <link rel="stylesheet" href="12.8.css">
+</head>
+<body>
+    <h2>Всплывающее окно</h2>
+    <div class="container">
+        <img src="Images/discount.png" class="gift" alt=""> 
+        <div id="" class="text-block">     
+            <p class="title">Подарок при первой покупке в нашем магазине!</p>
+            <button class="button" id="">Отлично!</button>
+        </div>
+    </div>
+    <script src="12.8.js"></script>
+</body>
+</html>
+
+
+
+CSS
+
+.container {
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    background-color: #FAEEDD;
+}
+
+.title {
+    font-size: 19px;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+
+.button {
+    font-weight: 900;
+    border-radius: 7px;
+    background-color: #589FFF;
+    border-color: #589FFF;
+    width: 112px;
+    height: 30px;
+}
+
+.gift {
+    height: 120px;
+    width: 120px;
+}
+
+
+
+JS
+
+const giftArr = [
+ {
+   title: "Скидка 20% на первую покупку в нашем магазине!",
+   icon: "Images/discount.png"
+ },
+ {
+   title: "Скидка 10% на всё!",
+   icon: "Images/discount.png"
+ },
+ {
+   title: "Подарок при первой покупке в нашем магазине!",
+   icon: "Images/discount.png"
+ },
+ {
+   title: "Бесплатная доставка для вас!",
+   icon: "Images/discount.png"
+ },
+ {
+   title: "Сегодня день больших скидок!",
+   icon: "Images/discount.png"
+ }
+]
+
+function getRandomGift(gifts) {
+    const randomIndex = Math.floor(Math.random() * gifts.length);
+    return gifts[randomIndex];
+}
+
+function showGiftCard() {
+    const container = document.querySelector('.container');
+    const titleElement = document.querySelector('.title');
+    const imageElement = document.querySelector('.gift');
+    
+    const randomGift = getRandomGift(giftArr);
+    
+    titleElement.textContent = randomGift.title;
+    imageElement.src = randomGift.icon;
+    imageElement.alt = "Иконка подарка";
+    
+    container.style.display = 'flex';
+}
+
+function closeGiftCard() {
+    const container = document.querySelector('.container');
+    container.style.display = 'none';
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const container = document.querySelector('.container');
+    container.style.display = 'none';
+    
+    setTimeout(showGiftCard, 3000);
+    
+    const closeButton = document.querySelector('.button');
+    closeButton.addEventListener('click', closeGiftCard);
+});
+
+
+
+Задание 2
+
