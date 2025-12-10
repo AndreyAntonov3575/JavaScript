@@ -1,0 +1,365 @@
+HTML
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Доработка приложения</title> 
+    <link rel="stylesheet" href="15.8.css">
+</head>
+<body>
+    <h1>Название фильма</h1>
+    
+    <form id="film-form">
+        <label for="title">Название:</label><br>
+        <input type="text" id="title" name="title"><br>
+        <label for="genre">Жанр:</label><br>
+        <input type="text" id="genre" name="genre"><br>
+        <label for="releaseYear">Год:</label><br>
+        <input type="text" id="releaseYear" name="releaseYear"><br>
+        <input type="checkbox" id="isWatched" name="isWatched">
+        <label for="isWatched">Успели посмотреть?</label><br><br>
+        
+        <div class="form-buttons">
+            <button class="addButton" type="submit" id="addButton">Submit</button>
+        </div>
+    </form>
+    
+    <div class="filter-section">
+        <div class="filters">
+            <input type="text" id="titleFilter" placeholder="Название фильма">
+            <input type="text" id="genreFilter" placeholder="Жанр">
+            <input type="text" id="yearFilter" placeholder="Год релиза">
+            <select id="watchedFilter">
+                <option value="">Все</option>
+                <option value="true">Просмотренные</option>
+                <option value="false">Непросмотренные</option>
+            </select>
+        </div>
+        <button class="filterDeleteAll" id="clearAllButton">Удалить всё</button>
+    </div>
+    
+    <table class="film-table" id="film-table">
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Жанр</th>
+                <th>Год</th>
+                <th>Успели посмотреть?</th>
+                <th>Действие</th>
+            </tr>
+        </thead>
+        <tbody id="film-tbody">
+            <!-- Rows will be inserted here -->
+        </tbody>
+    </table>
+    <script src="15.8.js"></script>
+</body>
+</html>
+
+
+
+CSS
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  padding: 30px;
+  color: #333;
+}
+
+form {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px #999;
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+form input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+form input[type="checkbox"] {
+  margin-bottom: 20px;
+}
+
+form input[type="submit"] {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: 0;
+  border-radius: 5px;
+}
+
+form input[type="submit"]:hover {
+  background-color: #444;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  background-color: #fff;
+  text-align: left;
+  border-collapse: collapse;
+  box-shadow: 0px 0px 5px #999;
+}
+
+th,
+td {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #333;
+  color: #fff;
+}
+
+td {
+  vertical-align: top;
+}
+
+.addButton {
+  color: white;
+  background-color: #333;
+  border-radius: 5px;
+  width: 100%;
+  height: 40px;
+  font-size: 15px;
+}
+
+.filter-section {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+}
+
+.filters {
+  box-shadow: 0px 0px 5px #999;
+  width: 73%;
+  height: 100px;
+  border-radius: 7px;
+  display: flex;
+  gap: 300px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.filterDeleteAll {
+  border-radius: 5px;
+  color: white;
+  background-color: red;
+  border-color: red;
+  width: 120px;
+  height: 40px;
+  margin-top: 60px;
+}
+
+.film-table {
+  margin-top: 20px;
+}
+
+.deleteButton {
+  width: 160px;
+  height: 40px;
+  border-radius: 5px;
+  color: white;
+  background-color: red;
+  border-color: red;
+}
+
+
+
+JS
+
+const API_URL = 'https://sb-film.skillbox.cc/films';
+const EMAIL = 'ovikdevil@gmail.com';
+
+let debounceTimer;
+
+function handleFormSubmit(e) {
+  e.preventDefault();
+
+  const title = document.getElementById("title").value;
+  const genre = document.getElementById("genre").value;
+  const releaseYear = document.getElementById("releaseYear").value;
+  const isWatched = document.getElementById("isWatched").checked;
+
+  if (!title || !genre || !releaseYear) {
+    alert('Необходимо заполнить все поля');
+    return;
+  }
+
+  const film = {
+    title: title,
+    genre: genre,
+    releaseYear: releaseYear,
+    isWatched: isWatched,
+  };
+
+  addFilm(film);
+  
+  document.getElementById("title").value = '';
+  document.getElementById("genre").value = '';
+  document.getElementById("releaseYear").value = '';
+  document.getElementById("isWatched").checked = false;
+}
+
+async function addFilm(film) {
+  try {
+    await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        email: EMAIL,
+      },
+      body: JSON.stringify(film),
+    });
+    loadFilms();
+  } catch (error) {
+    console.error('Ошибка при добавлении фильма:', error);
+    alert('Не удалось добавить фильм');
+  }
+}
+
+async function deleteFilm(id) {
+  try {
+    await fetch(`${API_URL}/${id}`, {
+      method: "DELETE",
+      headers: {
+        email: EMAIL,
+      },
+    });
+    loadFilms();
+  } catch (error) {
+    console.error('Ошибка при удалении фильма:', error);
+    alert('Не удалось удалить фильм');
+  }
+}
+
+async function clearAllFilms() {
+  
+  try {
+    await fetch(API_URL, {
+      method: "DELETE",
+      headers: {
+        email: EMAIL,
+      },
+    });
+    loadFilms();
+  } catch (error) {
+    console.error('Ошибка при удалении всех фильмов:', error);
+    alert('Не удалось удалить все фильмы');
+  }
+}
+
+async function loadFilms() {
+  try {
+    let url = API_URL;
+    
+    const titleFilter = document.getElementById("titleFilter").value.trim();
+    const genreFilter = document.getElementById("genreFilter").value.trim();
+    const yearFilter = document.getElementById("yearFilter").value.trim();
+    const watchedFilter = document.getElementById("watchedFilter").value;
+    
+    const params = new URLSearchParams();
+    
+    if (titleFilter)
+      params.append('title', titleFilter);
+    if (genreFilter)
+      params.append('genre', genreFilter);
+    if (yearFilter)
+      params.append('releaseYear', yearFilter);
+    if (watchedFilter)
+      params.append('isWatched', watchedFilter);
+    
+    const queryString = params.toString();
+    if (queryString) {
+      url += `?${queryString}`;
+    }
+    
+    const filmsResponse = await fetch(url, {
+      headers: {
+        email: EMAIL,
+      },
+    });
+    
+    const films = await filmsResponse.json();
+    renderTable(films);
+    
+  } catch (error) {
+    console.error('Ошибка при загрузке фильмов:', error);
+    renderTableError();
+  }
+}
+
+function handleFilterChange() {
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(() => {
+    loadFilms();
+  }, 300);
+}
+
+function renderTable(films) {
+  const filmTableBody = document.getElementById("film-tbody");
+  
+  filmTableBody.innerHTML = "";
+
+  films.forEach((film) => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${film.title}</td>
+      <td>${film.genre}</td>
+      <td>${film.releaseYear}</td>
+      <td>${film.isWatched ? "Да" : "Нет"}</td>
+      <td>
+        <button class="deleteButton" data-id="${film.id}">Удалить</button>
+      </td>
+    `;
+    filmTableBody.appendChild(row);
+  });
+  
+  document.querySelectorAll('.deleteButton').forEach(button => {
+    button.addEventListener('click', function() {
+      const filmId = this.getAttribute('data-id');
+      deleteFilm(filmId);
+    });
+  });
+}
+
+function renderTableError() {
+  const filmTableBody = document.getElementById("film-tbody");
+  filmTableBody.innerHTML = `
+    <tr>
+      <td colspan="5" style="text-align: center; color: red; padding: 30px;">
+        Ошибка загрузки данных
+      </td>
+    </tr>
+  `;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById("film-form").addEventListener("submit", handleFormSubmit);
+  
+  document.getElementById("clearAllButton").addEventListener("click", clearAllFilms);
+  
+  document.getElementById("titleFilter").addEventListener("input", handleFilterChange);
+  document.getElementById("genreFilter").addEventListener("input", handleFilterChange);
+  document.getElementById("yearFilter").addEventListener("input", handleFilterChange);
+  document.getElementById("watchedFilter").addEventListener("change", handleFilterChange);
+  
+  loadFilms();
+});
