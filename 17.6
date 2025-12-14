@@ -1,0 +1,557 @@
+HTML
+
+<!DOCTYPE html> 
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="17.6.css" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover">
+    <title>Веб-приложение для списка вещей на складе</title>
+  </head>
+  <body>
+     <div class="container">
+        <div id="warehouse-header-section" class="page-section active">
+            <header class="header-section">
+                <div class="header-content">
+                    <h1>Склад</h1>
+                    <a href="#add" class="btn btn-primary">Добавить запись</a>
+                </div>
+            </header>
+        </div>
+        
+        <div id="warehouse-table-section" class="page-section active">
+            <main class="table-section">
+                <div class="card">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Название</th>
+                                    <th>Полка</th>
+                                    <th>Вес</th>
+                                    <th>Время хранения</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="warehouse-table-body">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+        
+        <div id="add-page" class="page-section">
+            <header class="header-section">
+                <div class="header-content">
+                    <h1>Добавить запись</h1>
+                </div>
+            </header>
+            
+            <main class="table-section">
+                <div class="card">
+                    <form id="add-item-form">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Название">
+                            <div class="error-message"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="text" id="shelf" name="shelf" class="form-control" placeholder="Полка">
+                            <div class="error-message"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="number" id="weight" name="weight" class="form-control" placeholder="Вес" step="1" min="1">
+                            <div class="error-message"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="date" id="storageDate" name="storageDate" class="form-control">
+                            <div class="error-message"></div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Добавить запись</button>
+                        </div>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
+
+
+
+CSS
+
+body {
+    display: flex;
+    padding: 20px;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+.card {
+    background: white;
+    border-radius: 16px;
+    padding: 40px;
+    width: 100%;
+    max-width: 1200px;
+    min-height: 600px;
+    position: relative;
+}
+
+.table-container {
+    margin: 20px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th {
+    background: #2c2c2c;
+    color: white;
+    padding: 15px;
+    text-align: left;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.3s;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+tr:hover {
+    background: #f8f9fa;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary {
+    background: #018078;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #00aba0;
+}
+
+.btn-danger {
+    background: #9e0019;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 30px;
+}
+
+.btn-danger:hover {
+    background: #bb001c;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #4a5568;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 30px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.form-control.error {
+    border-color: #667eea;
+}
+
+.form-actions .btn-primary {
+    width: 100%;
+}
+
+.error-message {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.page-section {
+    display: none;
+}
+
+.page-section.active {
+    display: block;
+}
+
+.header-section {
+    margin-bottom: 20px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    border-radius: 16px;
+    padding: 25px 40px;
+    margin-bottom: 20px;
+}
+
+.table-section {
+    margin-top: 0;
+}
+
+th:last-child {
+    background: #2c2c2c;
+    cursor: default;
+    min-width: 100px;
+}
+
+th:not(:last-child):hover {
+    background: #4f4f4f;
+}
+
+#add-page .header-content h1 {
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+}
+
+
+
+JS
+
+
+main.js
+
+import { initApp } from './navigation.js';
+document.addEventListener('DOMContentLoaded', initApp);
+
+
+navigation.js
+
+import { renderWarehousePage, initTableSorting } from './warehouse.js';
+import { renderAddItemPage } from './addItem.js';
+
+function showLoader() {
+    const loader = document.getElementById('loader');
+    if (loader) loader.style.display = 'block';
+}
+
+export async function navigate(page = 'warehouse') {
+    showLoader();
+    
+    document.querySelectorAll('.page-section').forEach(section => {
+        section.classList.remove('active');
+    });
+    
+    try {
+        if (page === 'add') {
+            document.getElementById('add-page').classList.add('active');
+            const container = document.querySelector('#add-page .card');
+            if (container) {
+                renderAddItemPage(container);
+            }
+        } else {
+            document.getElementById('warehouse-header-section').classList.add('active');
+            document.getElementById('warehouse-table-section').classList.add('active');
+            
+            renderWarehousePage();
+            setTimeout(initTableSorting, 0);
+        }
+    } catch (error) {
+        console.error('Ошибка навигации:', error);
+    } finally {
+        hideLoader();
+    }
+}
+
+export function initApp() {
+    const hash = window.location.hash.slice(1);
+    navigate(hash || 'warehouse');
+    
+    window.addEventListener('hashchange', () => {
+        const newHash = window.location.hash.slice(1);
+        navigate(newHash || 'warehouse');
+    });
+}
+
+
+storage.js
+
+const STORAGE_KEY = 'warehouse_items';
+
+export function getItems() {
+    const items = localStorage.getItem(STORAGE_KEY);
+    return items ? JSON.parse(items) : [];
+}
+
+export function saveItems(items) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+}
+
+export function addItem(item) {
+    const items = getItems();
+    items.push(item);
+    saveItems(items);
+}
+
+export function deleteItem(index) {
+    const items = getItems();
+    if (index >= 0 && index < items.length) {
+        items.splice(index, 1);
+        saveItems(items);
+    }
+}
+
+
+warehouse.js
+
+import { getItems, deleteItem } from './storage.js';
+
+let currentSort = {column: null, direction: 'asc'};
+
+function sortItems(items, column, direction) {
+    return [...items].sort((a, b) => {
+        let aValue = a[column];
+        let bValue = b[column];
+        
+        if (column === 'weight') {
+            aValue = parseFloat(aValue);
+            bValue = parseFloat(bValue);
+        }
+        else if (column === 'storageDate') {
+            aValue = new Date(aValue).getTime();
+            bValue = new Date(bValue).getTime();
+        }
+        else {
+            const aNum = parseFloat(aValue);
+            const bNum = parseFloat(bValue);
+            
+            if (!isNaN(aNum) && !isNaN(bNum)) {
+                aValue = aNum;
+                bValue = bNum;
+            } else {
+                aValue = String(aValue).toLowerCase();
+                bValue = String(bValue).toLowerCase();
+            }
+        }
+        
+        if (direction === 'asc') {
+            if (aValue < bValue) return -1;
+            if (aValue > bValue) return 1;
+            return 0;
+        } else {
+            if (aValue > bValue) return -1;
+            if (aValue < bValue) return 1;
+            return 0;
+        }
+    });
+}
+
+function updateSortIndicators() {
+    document.querySelectorAll('th').forEach(th => {
+        th.classList.remove('sorted-asc', 'sorted-desc');
+    });
+}
+
+export function renderWarehousePage() {
+    let items = getItems();
+    const tbody = document.getElementById('warehouse-table-body');
+    
+    if (!tbody) 
+        return;
+    
+    if (currentSort.column) {
+        items = sortItems(items, currentSort.column, currentSort.direction);
+    }
+    
+    tbody.innerHTML = '';
+    
+    if (items.length > 0) {
+        items.forEach((item, index) => {
+            const row = document.createElement('tr');
+            
+            const date = new Date(item.storageDate);
+            const formattedDate = date.toLocaleDateString('ru-RU');
+            
+            row.innerHTML = `
+                <td>${item.name}</td>
+                <td>${item.shelf}</td>
+                <td>${item.weight} кг</td>
+                <td>${formattedDate}</td>
+                <td>
+                    <button class="btn-danger" data-index="${index}">Удалить</button>
+                </td>
+            `;
+            
+            tbody.appendChild(row);
+        });
+        
+        const deleteButtons = tbody.querySelectorAll('.btn-danger');
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const index = parseInt(this.dataset.index);
+                deleteItem(index);
+                renderWarehousePage();
+            });
+        });
+    }
+    
+    updateSortIndicators();
+}
+
+export function initTableSorting() {
+    const headers = document.querySelectorAll('th:not(:last-child)');
+    
+    headers.forEach((th, index) => {
+        const columnKeys = ['name', 'shelf', 'weight', 'storageDate'];
+        const columnKey = columnKeys[index];
+        
+        if (!columnKey) return;
+        
+        th.style.cursor = 'pointer';
+        
+        th.addEventListener('click', () => {
+            console.log('Клик по колонке:', columnKey, 'текущая сортировка:', currentSort);
+            
+            if (currentSort.column === columnKey) {
+                currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+            } else {
+                currentSort.column = columnKey;
+                currentSort.direction = 'asc';
+            }
+            
+            console.log('Новая сортировка:', currentSort);
+            
+            renderWarehousePage();
+        });
+    });
+}
+
+
+addItem.js
+
+import { addItem } from './storage.js';
+
+function validateForm() {
+    let isValid = true;
+    
+    const fields = [
+        { id: 'name', name: 'Название' },
+        { id: 'shelf', name: 'Полка' },
+        { id: 'weight', name: 'Вес' },
+        { id: 'storageDate', name: 'Время хранения' }
+    ];
+    
+    fields.forEach(field => {
+        const input = document.getElementById(field.id);
+        const error = input.nextElementSibling;
+        
+        input.classList.remove('error');
+        error.classList.remove('show');
+        
+        if (!input.value.trim()) {
+            input.classList.add('error');
+            error.classList.add('show');
+            isValid = false;
+        }
+        
+        if (field.id === 'weight') {
+            const weight = parseFloat(input.value);
+            if (isNaN(weight) || weight <= 0) {
+                input.classList.add('error');
+
+                error.classList.add('show');
+                isValid = false;
+            }
+        }
+        
+        if (field.id === 'storageDate') {
+            const date = new Date(input.value);
+            if (isNaN(date.getTime())) {
+                input.classList.add('error');
+                error.classList.add('show');
+                isValid = false;
+            }
+        }
+    });
+    
+    return isValid;
+}
+
+export function renderAddItemPage(container) {
+
+    
+    const form = document.getElementById('add-item-form');
+    if (form) {
+        const newForm = form.cloneNode(true);
+        form.parentNode.replaceChild(newForm, form);
+        
+        newForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            if (validateForm()) {
+                const newItem = {
+                    name: document.getElementById('name').value.trim(),
+                    shelf: document.getElementById('shelf').value.trim().toUpperCase(),
+                    weight: parseFloat(document.getElementById('weight').value),
+                    storageDate: document.getElementById('storageDate').value
+                };
+                
+                addItem(newItem);
+                
+                newForm.reset();
+                
+                window.location.hash = 'warehouse';
+            }
+        });
+    }
+}
