@@ -1,0 +1,108 @@
+Задание 1
+
+HTML
+
+<!DOCTYPE html> 
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="18.9.css" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover">
+    <title>18.9 Практическая работа</title>
+  </head>
+  <body>
+    <div id="imagesContainer">
+        
+    </div>
+    
+    <script src="18.9.js"></script>
+  </body>
+</html>
+
+
+
+CSS
+
+body {
+    margin: 20px;
+}
+
+img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.image-row {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+
+
+JS
+
+const catImages = [
+    'Images/cat1.jpg',
+    'Images/cat2.jpg',
+    'Images/cat3.jpg'
+];
+
+const dogImages = [
+    'Images/dog1.jpg',
+    'Images/dog2.jpg',
+    'Images/dog3.jpg'
+];
+
+function getCatImages() {
+    return new Promise((resolve) => {
+        const randomTime = Math.floor(Math.random() * 3000) + 2000;
+        
+        setTimeout(() => {
+            resolve(catImages);
+        }, randomTime);
+    });
+}
+
+function getDogImages() {
+    return new Promise((resolve) => {
+        const randomTime = Math.floor(Math.random() * 3000) + 2000;
+        
+        setTimeout(() => {
+            resolve(dogImages);
+        }, randomTime);
+    });
+}
+
+window.onload = function() {
+    const container = document.getElementById('imagesContainer');
+    
+    const catPromise = getCatImages();
+    const dogPromise = getDogImages();
+    
+    catPromise.then((images) => {
+        const catRow = document.createElement('div');
+        catRow.className = 'image-row';
+        
+        images.forEach(imagePath => {
+            const img = document.createElement('img');
+            img.src = imagePath;
+            catRow.appendChild(img);
+        });
+        
+        container.appendChild(catRow);
+    });
+    
+    dogPromise.then((images) => {
+        const dogRow = document.createElement('div');
+        dogRow.className = 'image-row';
+        
+        images.forEach(imagePath => {
+            const img = document.createElement('img');
+            img.src = imagePath;
+            dogRow.appendChild(img);
+        });
+        
+        container.appendChild(dogRow);
+    });
+};
