@@ -106,3 +106,59 @@ window.onload = function() {
         container.appendChild(dogRow);
     });
 };
+
+
+
+Задание 2
+
+HTML
+
+<!DOCTYPE html> 
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="18.9.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover">
+    <title>18.9 Практическая работа</title>
+  </head>
+  <body>
+    <div id="progress-bar">
+        
+    </div>
+    
+    <script src="18.9.js"></script>
+  </body>
+</html>
+
+
+
+CSS
+
+#progress-bar {
+    width: 100%;
+    max-width: 500px;
+    height: 20px;
+    background-color: #5b5abd;
+    transform-origin: left;
+}
+
+
+
+JS
+
+function progress(time) {
+    if (time < 2) 
+        time = 2;
+    
+    const bar = document.getElementById('progress-bar');
+    bar.style.transform = 'scaleX(0)';
+    bar.style.transition = 'none';
+    
+    bar.offsetHeight;
+    
+    bar.style.transition = 'transform ' + time + 's linear';
+    bar.style.transform = 'scaleX(1)';
+}
+
+window.onload = function() {
+    progress(3);
+};
