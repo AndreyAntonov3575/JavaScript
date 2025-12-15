@@ -162,3 +162,125 @@ function progress(time) {
 window.onload = function() {
     progress(3);
 };
+
+
+
+Задание 3
+
+HTML
+
+<!DOCTYPE html> 
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="18.9.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover">
+    <title>18.9 Практическая работа</title>
+  </head>
+  <body>
+    <div id="progress1" class="progress-bar"></div>
+    <div id="images1" class="imagesContainer"></div>
+
+    <div id="progress2" class="progress-bar"></div>
+    <div id="images2" class="imagesContainer"></div>
+
+    <script src="18.9.js"></script>
+  </body>
+</html>
+
+
+
+CSS
+
+body {
+    margin: 20px;
+}
+
+.progress-bar {
+    width: 100%;
+    max-width: 500px;
+    height: 20px;
+    background-color: #5b5abd;
+    transform-origin: left;
+    margin-bottom: 20px;
+}
+
+.imagesContainer {
+    margin-bottom: 40px;
+    display: flex;
+    gap: 10px;
+}
+
+.imagesContainer img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+
+
+JS
+
+const catImages = [
+    'Images/cat1.jpg',
+    'Images/cat2.jpg',
+    'Images/cat3.jpg'
+];
+
+const dogImages = [
+    'Images/dog1.jpg',
+    'Images/dog2.jpg',
+    'Images/dog3.jpg'
+];
+
+function progress(time, progressBarId) {
+    if (time < 2) time = 2;
+    
+    const bar = document.getElementById(progressBarId);
+    
+    bar.style.transition = 'none';
+    bar.style.transform = 'scaleX(0)';
+    bar.offsetHeight;
+    
+    bar.style.transition = `transform ${time}s linear`;
+    bar.style.transform = 'scaleX(1)';
+}
+
+function loadCatImages() {
+    const time = (Math.floor(Math.random() * 3000) + 2000) / 1000;
+    
+    progress(time, 'progress1');
+    
+    const bar = document.getElementById('progress1');
+    bar.addEventListener('transitionend', () => {
+        catImages.forEach(imagePath => {
+            const img = document.createElement('img');
+            img.src = imagePath;
+            document.getElementById('images1').appendChild(img);
+        });
+        
+        loadDogImages();
+    }, { once: true });
+}
+
+function loadDogImages() {
+    const time = (Math.floor(Math.random() * 3000) + 2000) / 1000;
+    
+    const progress2 = document.getElementById('progress2');
+    progress2.style.display = 'block';
+    
+    progress(time, 'progress2');
+    
+    const bar = document.getElementById('progress2');
+    bar.addEventListener('transitionend', () => {
+        dogImages.forEach(imagePath => {
+            const img = document.createElement('img');
+            img.src = imagePath;
+            document.getElementById('images2').appendChild(img);
+        });
+    }, { once: true });
+}
+
+window.onload = function() {
+    document.getElementById('progress2').style.display = 'none';
+    loadCatImages();
+};
