@@ -1,0 +1,253 @@
+HTML
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Задание 2 - Знакомство с JavaScript</title>
+  <link rel="stylesheet" href="Задание 2 - Знакомство с JavaScript.css">
+</head>
+<body>
+    <main class="container">
+      <article class="weather-app">
+        <div class="location-bar">
+          <input type="text" class="location-input" placeholder="Введите ваш город...">
+          <button class="location-button">
+            <img src="Images/Vector.svg" class="location-icon">
+          </button>
+        </div>
+        <div class="current-weather">
+          <!-- <img class="current-weather-icon" src="">
+          <p class="current-weather-temperature">-3°С</p>
+          <p class="current-weather-status">Облачно</p> -->
+        </div>
+        <div class="forecast">
+          <!-- <div class="forecast-element">
+            <p class="forecast-time">Сейчас</p>
+            <img src="" alt="" class="forecast-icon" />
+            <p class="forecast-temperature">-3°С</p>
+          </div> -->
+        </div>
+      </article>
+    </main>
+    <script src="Задание 2 - Знакомство с JavaScript.js"></script>
+</body>
+</html>
+
+
+
+CSS
+
+body,
+p {
+    margin: 0;
+}
+
+@font-face {
+    font-family: Inter;
+    font-weight: 400;
+    src: url(./fonts/InterRegular.ttf);
+}
+
+@font-face {
+    font-family: Inter;
+    font-weight: bold;
+    src: url(./fonts/InterRegular.ttf);
+}
+
+html {
+    font-family: Inter;
+    font-weight: 400;
+}
+
+.container {
+    background: #6600FF;
+    height: 100vh;
+    width: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.weather-app {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #FFFFFF;
+    height: 530px;
+    width: 380px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.location-bar {
+    height: 44px;
+    display: flex;
+}
+
+.location-button {
+    height: 100%;
+    width: 44px;
+    border: 1px solid rgba(0, 0, 0, 40%);
+    border-radius: 10px;
+    margin-left: 20px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.location-input {
+    flex-grow: 1;
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 40%);
+    border-radius: 10px;
+    padding: 12px 15px;
+    box-sizing: border-box;
+}
+
+.current-weather {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.current-weather-icon {
+    width: 220px;
+    height: 220px;
+}
+
+.current-weather-temperature {
+    font-size: 45px;
+}
+
+.current-weather-status {
+    font-size: 25px;
+}
+
+.forecast {
+    display: flex;
+    gap: 10px;
+    overflow: auto;
+}
+
+.forecast-element {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.forecast-time {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.forecast-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.forecast-temperature {
+    font-size: 15px;
+}
+
+
+
+JS
+
+async function getCurrentWeatherByCity(city) {
+    const data = await fetch(`http://api.weatherapi.com/v1/current.json?key=e1ed3b54960e4098b35220957242910&q=${city}&aqi=no`)
+    const currentWeather = await data.json()
+    console.log(currentWeather)
+    return currentWeather
+}
+
+const locationInput = document.querySelector('.location-input')
+const locationButton = document.querySelector('.location-button')
+
+locationButton.addEventListener('click', async () => {
+    const locationInputValue = locationInput.value
+    const currentWeather = await getCurrentWeatherByCity(locationInputValue)
+    const forecast = await getForecastByCity(locationInputValue)
+
+    const currentWeatherIcon = `http:${currentWeather.current.condition.icon}`
+    const currentWeatherTemperature = currentWeather.current.temp_c
+    const currentWeatherStatus = currentWeather.current.condition.text
+
+    resetWeatherApp()
+
+    renderCurrentWeather(currentWeatherIcon, currentWeatherTemperature, currentWeatherStatus)
+
+    renderForecast(forecast.forecast.forecastday[0].hour)
+})
+
+function renderCurrentWeather(iconSrc, temperature, status) {
+    const currentWeatherIconEl = document.createElement('img')
+    currentWeatherIconEl.setAttribute('class', "current-weather-icon")
+    currentWeatherIconEl.setAttribute('src', iconSrc)
+
+    const currentWeatherTemperatureEl = document.createElement('p')
+    currentWeatherTemperatureEl.setAttribute('class', "current-weather-temperature")
+    currentWeatherTemperatureEl.innerHTML = temperature
+
+    const currentWeatherStatusEl = document.createElement('p')
+    currentWeatherStatusEl.setAttribute('class', "current-weather-status")
+    currentWeatherStatusEl.innerHTML = status
+
+    const currentWeather = document.querySelector('.current-weather')
+    currentWeather.appendChild(currentWeatherIconEl)
+    currentWeather.appendChild(currentWeatherTemperatureEl)
+    currentWeather.appendChild(currentWeatherStatusEl)
+}
+
+async function getForecastByCity(city) {
+    const data = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=e1ed3b54960e4098b35220957242910&q=${city}&days=1&aqi=no&alerts=no`)
+    const forecast = await data.json()
+    console.log(forecast)
+    return forecast
+}
+
+function createForecastElement(iconSrc, time, temperature) {
+    const forecastElement = document.createElement('div')
+    forecastElement.setAttribute('class', "forecast-element")
+
+    const forecastTime = document.createElement('p')
+    forecastTime.setAttribute('class', "forecast-time")
+    forecastTime.innerHTML = time.slice(11)
+
+    const forecastIcon = document.createElement('img')
+    forecastIcon.setAttribute('class', "forecast-icon")
+    forecastIcon.setAttribute('src', `${iconSrc}`)
+
+    const forecastTemperature = document.createElement('p')
+    forecastTemperature.setAttribute('class', "forecast-temperature")
+    forecastTemperature.innerHTML = temperature
+
+    forecastElement.appendChild(forecastTime)
+    forecastElement.appendChild(forecastIcon)
+    forecastElement.appendChild(forecastTemperature)
+
+    return forecastElement
+}
+
+// const forecast = [(iconSrc, time, temperature),(iconSrc, time, temperature),(iconSrc, time, temperature)]
+function renderForecast(forecast) {
+    const forecastContainer = document.querySelector(".forecast")
+
+    forecast.forEach(forecastItem => {
+        const forecastElement = createForecastElement(forecastItem.condition.icon, forecastItem.time, forecastItem.temp_c)
+        forecastContainer.appendChild(forecastElement)
+    })
+}
+
+function resetWeatherApp() {
+    const currentWeather = document.querySelector('.current-weather')
+    currentWeather.innerHTML = ''
+
+    const forecastContainer = document.querySelector(".forecast")
+    forecastContainer.innerHTML = ''
+}
