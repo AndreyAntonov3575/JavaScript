@@ -1,0 +1,1724 @@
+HTML
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Задание 3 Список персонажей Рик и Морти</title>
+  <link rel="stylesheet" href="Задание 3 Список персонажей Рик и Морти.css">
+</head>
+<body>
+    <main class="container">
+      <article class="RickAndMorty">
+        <div class="section1">
+          <div class="section11">
+            <img src="Images/1 1.png"  class="Rick">
+            <img src="Images/1 2.png"  class="Morty">
+            <div class="section1-text1">
+              <p>Rick Sanchez</p>
+              <p>Male</p>
+            </div>
+            <div class="section1-text2">
+              <p>Alive</p>
+              <p>Earth (C-137)</p>
+            </div>
+            <div class="section1-text3">
+              <p>Morty Smith</p>
+              <p>Male</p>
+            </div>
+            <div class="section1-text4">
+              <p>Dead</p>
+              <p>unknown</p>
+            </div>
+          </div>
+
+          <div class="section12">
+            <img src="Images/1 3.png" class="Summer">
+            <img src="Images/1 4.png" class="Beth">
+            <div class="section12-text1">
+              <p>Summer Smith</p>
+              <p>Female</p>
+            </div>
+            <div class="section12-text2">
+              <p>Unknown</p>
+              <p>Earth (Replacement Dimension)</p>
+            </div>
+            <div class="section12-text3">
+              <p>Beth Smith</p>
+              <p>Female</p>
+            </div>
+            <div class="section12-text4">
+              <p>Alive</p>
+              <p>Earth (Replacement Dimension)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section2">
+          <div class="section21">
+            <img src="Images/1 1.png"  class="Rick">
+            <img src="Images/1 2.png"  class="Morty">
+            <div class="section2-text1">
+              <p>Rick Sanchez</p>
+              <p>Male</p>
+            </div>
+            <div class="section2-text2">
+              <p>Alive</p>
+              <p>Earth (C-137)</p>
+            </div>
+            <div class="section2-text3">
+              <p>Morty Smith</p>
+              <p>Male</p>
+            </div>
+            <div class="section2-text4">
+              <p>Dead</p>
+              <p>unknown</p>
+            </div>
+          </div>
+
+          <div class="section22">
+            <img src="Images/1 3.png" class="Summer">
+            <img src="Images/1 4.png" class="Beth">
+            <div class="section22-text1">
+              <p>Summer Smith</p>
+              <p>Female</p>
+            </div>
+            <div class="section22-text2">
+              <p>Alive</p>
+              <p>Earth (Replacement Dimension)</p>
+            </div>
+            <div class="section22-text3">
+              <p>Beth Smith</p>
+              <p>Female</p>
+            </div>
+            <div class="section22-text4">
+              <p>Alive</p>
+              <p>Earth (Replacement Dimension)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section3">
+          <div class="section31">
+            <img src="Images/1 1.png"  class="Rick">
+            <div class="section3-text1">
+              <p>Rick Sanchez</p>
+              <p>Male</p>
+            </div>
+            <div class="section3-text2">
+              <p>Alive</p>
+              <p>Earth (C-137)</p>
+            </div>
+          </div>
+
+          <div class="section32">
+            <img src="Images/1 2.png"  class="Morty">
+            <div class="section3-text3">
+              <p>Morty Smith</p>
+              <p>Male</p>
+            </div>
+            <div class="section3-text4">
+              <p>Dead</p>
+              <p>unknown</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <div class="blackZone1">
+        <div class="blackZone11">
+          <p>1</p>
+          <p>...</p>
+          <p>4</p>
+          <p>5</p>
+          <p>6</p>
+          <p>...</p>
+          <p>59</p>
+        </div>
+      </div>
+
+      <div class="blackZone2">
+        <div class="blackZone21">
+          <p>1</p>
+          <p>...</p>
+          <p>4</p>
+          <p>5</p>
+          <p>6</p>
+          <p>...</p>
+          <p>59</p>
+        </div>
+      </div>
+
+      <div class="blackZone3">
+        <div class="blackZone31">
+          <p>1</p>
+          <p>...</p>
+          <p>4</p>
+          <p>5</p>
+          <p>6</p>
+          <p>...</p>
+          <p>59</p>
+        </div>
+      </div>
+
+      <div class="numbers1">
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+        <p>...</p>
+        <p>59</p>
+      </div>
+
+      <div class="numbers2">
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+        <p>...</p>
+        <p>59</p>
+      </div>
+
+      <div class="numbers3">
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+        <p>4</p>
+        <p>...</p>
+        <p>59</p>
+      </div>
+
+      <div class="numbers4">
+        <p>1</p>
+        <p>...</p>
+        <p>4</p>
+        <p>5</p>
+        <p>6</p>
+        <p>...</p>
+        <p>59</p>
+      </div>
+
+      <div class="numbers5">
+        <p>1</p>
+        <p>...</p>
+        <p>57</p>
+        <p>58</p>
+        <p>59</p>
+      </div>
+
+      <div class="numbers6">
+        <p>1</p>
+        <p>...</p>
+        <p>56</p>
+        <p>57</p>
+        <p>58</p>
+        <p>59</p>
+      </div>
+    </main>
+    <script src="Задание 3 Список персонажей Рик и Морти.js"></script>
+</body>
+</html>
+
+
+
+CSS
+
+.RickAndMorty {
+    height: 920px;
+    width: 2652px;
+    background: #444444;
+    display: flex;
+    gap: 125px;
+}
+
+.section1 {
+    height: 720px;
+    width: 1000px;
+    margin-top: 100px;
+    margin-left: 100px;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    padding-top: 15px;
+}
+
+.section11 {
+    height: 330px;
+    width: 630px;
+    position: relative;
+}
+
+.section12 {
+    height: 330px;
+    width: 630px;
+    position: relative;
+}
+
+.Rick {
+    height: 300px;
+    width: 300px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.Morty {
+    height: 300px;
+    width: 300px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.section1-text1 {
+    width: 150px;
+    height: 27px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0px 0px;
+    box-sizing: border-box;
+}
+
+.section1-text1 p {
+    margin: 0;
+    line-height: 1;
+}
+
+.section1-text1 p:first-child {
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+.section1-text1 p:nth-child(2) {
+    font-weight: 400;
+    font-size: 12px;
+    color: #8D8D8D;
+    margin-bottom: 3px;
+}
+
+.section1-text2 {
+    width: 150px;
+    height: 27px;
+    position: absolute;
+    left: 150px;
+    top: 0;
+    text-align: right;
+    padding: 0px 0px;
+    box-sizing: border-box;
+}
+
+.section1-text2 p {
+    margin: 0;
+    line-height: 1;
+}
+
+.section1-text2 p:first-child {
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 3px;
+    color: #00BD4C;
+}
+
+.section1-text2 p:nth-child(2) {
+    font-weight: 400;
+    font-size: 12px;
+    color: #8D8D8D;
+    margin-bottom: 3px;
+}
+
+.section1-text3 {
+    width: 150px;
+    height: 29px;
+    position: absolute;
+    right: 150px;
+    top: 0;
+}
+
+.section1-text4 {
+    width: 150px;
+    height: 27px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-align: right;
+    padding: 0px 0px;
+    box-sizing: border-box;
+}
+
+.section1-text3 p {
+    margin: 0;
+    line-height: 1;
+}
+
+.section1-text3 p:first-child {
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+.section1-text3 p:nth-child(2) {
+    font-weight: 400;
+    font-size: 12px;
+    color: #8D8D8D;
+    margin-bottom: 3px;
+}
+
+.section1-text4 p {
+    margin: 0;
+    line-height: 1;
+}
+
+.section1-text4 p:first-child {
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 3px;
+    color: #E60000;
+}
+
+.section1-text4 p:nth-child(2) {
+    font-weight: 400;
+    font-size: 12px;
+    color: #8D8D8D;
+    margin-bottom: 3px;
+}
+
+.Summer {
+    height: 300px;
+    width: 300px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.Beth {
+    height: 300px;
+    width: 300px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.section12-text1 {
+    width: 150px;
+    height: 27px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0px 0px;
+    box-sizing: border-box;
+}
+
+.section12-text1 p {
+    margin: 0;
+    line-height: 1;
+}
+
+.section12-text1 p:first-child {
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+.section12-text1 p:nth-child(2) {
+    font-weight: 400;
+    font-size: 12px;
+    color: #8D8D8D;
+    margin-bottom: 3px;
+}
+
+.section12-text2 {
+    width: 150px;
+    height: 27px;
+    position: absolute;
+    left: 150px;
+    top: 0;
+    text-align: right;
+    padding: 0px 0px;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+
+.section12-text2 p {
+    margin: 0;
+    line-height: 1;
+}
+
+.section12-text2 p:first-child {
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 3px;
+    color: #7B7B7B;
+}
+
+.section12-text2 p:nth-child(2) {
+    font-weight: 400;
+    font-size: 12px;
+    color: #8D8D8D;
+    margin-bottom: 3px;
+}
+
+.section12-text3 {
+    width: 150px;
+    height: 29px;
+    position: absolute;
+    right: 150px;
+    top: 0;
+}
+
+.section12-text4 {
+    width: 150px;
+    height: 27px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-align: right;
+    padding: 0px 0px;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+
+.section12-text3 p {
+    margin: 0;
+    line-height: 1;
+}
+
+.section12-text3 p:first-child {
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+.section12-text3 p:nth-child(2) {
+    font-weight: 400;
+    font-size: 12px;
+    color: #8D8D8D;
+    margin-bottom: 3px;
+}
+
+.section12-text4 p {
+    margin: 0;
+    line-height: 1;
+}
+
+.section12-text4 p:first-child {
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 3px;
+    color: #00BD4C;
+}
+
+.section12-text4 p:nth-child(2) {
+    font-weight: 400;
+    font-size: 12px;
+    color: #8D8D8D;
+    margin-bottom: 3px;
+}
+
+
+
+
+
+
+
+
+
+
+.section2 {
+    height: 720px;
+    width: 768px;
+    margin-top: 100px;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    padding-top: 15px;
+}
+
+.section21 {
+    height: 330px;
+    width: 630px;
+    position: relative;
+}
+
+.section22 {
+    height: 330px;
+    width: 630px;
+    position: relative;
+}
+
+.section2-text1 {
+    width: 150px;
+    height: 27px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0px 0px;
+    box-sizing: border-box;
+}
+
+.section2-text1 p {
+    margin: 0;
+    line-height: 1;
+}
+
+.section2-text1 p:first-child {
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+.section2-text1 p:nth-child(2) {
+    font-weight: 400;
+    font-size: 12px;
+    color: #8D8D8D;
+    margin-bottom: 3px;
+}
+
+.section2-text2 {
+    width: 150px;
+    height: 27px;
+    position: absolute;
+    left: 150px;
+    top: 0;
+    text-align: right;
+    padding: 0px 0px;
+    box-sizing: border-box;
+}
+
+.section2-text2 p {
+    margin: 0;
+    line-height: 1;
+}
+
+.section2-text2 p:first-child {
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 3px;
+    color: #00BD4C;
+}
+
+.section2-text2 p:nth-child(2) {
+    font-weight: 400;
+    font-size: 12px;
+    color: #8D8D8D;
+    margin-bottom: 3px;
+}
+
+.section2-text3 {
+    width: 150px;
+    height: 29px;
+    position: absolute;
+    right: 150px;
+    top: 0;
+}
+
+.section2-text4 {
+    width: 150px;
+    height: 27px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-align: right;
+    padding: 0px 0px;
+    box-sizing: border-box;
+}
+
+.section2-text3 p {
+    margin: 0;
+    line-height: 1;
+}
+
+.section2-text3 p:first-child {
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+.section2-text3 p:nth-child(2) {
+    font-weight: 400;
+    font-size: 12px;
+    color: #8D8D8D;
+    margin-bottom: 3px;
+}
+
+.section2-text4 p {
+    margin: 0;
+    line-height: 1;
+}
+
+.section2-text4 p:first-child {
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 3px;
+    color: #E60000;
+}
+
+.section2-text4 p:nth-child(2) {
+    font-weight: 400;
+    font-size: 12px;
+    color: #8D8D8D;
+    margin-bottom: 3px;
+}
+
+.section22-text1 {
+    width: 150px;
+    height: 27px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0px 0px;
+    box-sizing: border-box;
+}
+
+.section22-text1 p {
+    margin: 0;
+    line-height: 1;
+}
+
+.section22-text1 p:first-child {
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+.section22-text1 p:nth-child(2) {
+    font-weight: 400;
+    font-size: 12px;
+    color: #8D8D8D;
+    margin-bottom: 3px;
+}
+
+.section22-text2 {
+    width: 150px;
+    height: 27px;
+    position: absolute;
+    left: 150px;
+    top: 0;
+    text-align: right;
+    padding: 0px 0px;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+
+.section22-text2 p {
+    margin: 0;
+    line-height: 1;
+}
+
+.section22-text2 p:first-child {
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 3px;
+    color: #00BD4C;
+}
+
+.section22-text2 p:nth-child(2) {
+    font-weight: 400;
+    font-size: 12px;
+    color: #8D8D8D;
+    margin-bottom: 3px;
+}
+
+.section22-text3 {
+    width: 150px;
+    height: 29px;
+    position: absolute;
+    right: 150px;
+    top: 0;
+}
+
+.section22-text4 {
+    width: 150px;
+    height: 27px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-align: right;
+    padding: 0px 0px;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+
+.section22-text3 p {
+    margin: 0;
+    line-height: 1;
+}
+
+.section22-text3 p:first-child {
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+.section22-text3 p:nth-child(2) {
+    font-weight: 400;
+    font-size: 12px;
+    color: #8D8D8D;
+    margin-bottom: 3px;
+}
+
+.section22-text4 p {
+    margin: 0;
+    line-height: 1;
+}
+
+.section22-text4 p:first-child {
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 3px;
+    color: #00BD4C;
+}
+
+.section22-text4 p:nth-child(2) {
+    font-weight: 400;
+    font-size: 12px;
+    color: #8D8D8D;
+    margin-bottom: 3px;
+}
+
+
+
+
+
+
+
+
+.section3 {
+    height: 720px;
+    width: 480px;
+    margin-top: 100px;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    padding-top: 15px;
+}
+
+.section31 {
+    height: 330px;
+    width: 300px;
+    position: relative;
+}
+
+.section32 {
+    height: 330px;
+    width: 300px;
+    position: relative;
+}
+
+.section3-text1 {
+    width: 150px;
+    height: 27px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0px 0px;
+    box-sizing: border-box;
+}
+
+.section3-text1 p {
+    margin: 0;
+    line-height: 1;
+}
+
+.section3-text1 p:first-child {
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+.section3-text1 p:nth-child(2) {
+    font-weight: 400;
+    font-size: 12px;
+    color: #8D8D8D;
+    margin-bottom: 3px;
+}
+
+.section3-text2 {
+    width: 150px;
+    height: 27px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-align: right;
+    padding: 0px 0px;
+    box-sizing: border-box;
+}
+
+.section3-text2 p {
+    margin: 0;
+    line-height: 1;
+}
+
+.section3-text2 p:first-child {
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 3px;
+    color: #00BD4C;
+}
+
+.section3-text2 p:nth-child(2) {
+    font-weight: 400;
+    font-size: 12px;
+    color: #8D8D8D;
+    margin-bottom: 3px;
+}
+
+.section32-text1 {
+    width: 150px;
+    height: 27px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0px 0px;
+    box-sizing: border-box;
+}
+
+.section32-text1 p {
+    margin: 0;
+    line-height: 1;
+}
+
+.section32-text1 p:first-child {
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+.section32-text1 p:nth-child(2) {
+    font-weight: 400;
+    font-size: 12px;
+    color: #8D8D8D;
+    margin-bottom: 3px;
+}
+
+.section32-text2 {
+    width: 150px;
+    height: 27px;
+    position: absolute;
+    left: 0px;
+    top: 0;
+    text-align: right;
+    padding: 0px 0px;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+
+.section32-text2 p {
+    margin: 0;
+    line-height: 1;
+}
+
+.section32-text2 p:first-child {
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 3px;
+    color: #7B7B7B;
+}
+
+.section32-text2 p:nth-child(2) {
+    font-weight: 400;
+    font-size: 12px;
+    color: #8D8D8D;
+    margin-bottom: 3px;
+}
+
+.section32-text3 {
+    width: 150px;
+    height: 29px;
+    position: absolute;
+    right: 150px;
+    top: 0;
+}
+
+.section3-text4 {
+    width: 150px;
+    height: 27px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-align: right;
+    padding: 0px 0px;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+
+.section3-text3 p {
+    margin: 0;
+    line-height: 1;
+}
+
+.section3-text3 p:first-child {
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+.section3-text3 p:nth-child(2) {
+    font-weight: 400;
+    font-size: 12px;
+    color: #8D8D8D;
+    margin-bottom: 3px;
+}
+
+.section3-text4 p {
+    margin: 0;
+    line-height: 1;
+}
+
+.section3-text4 p:first-child {
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 3px;
+    color: #E60000;
+}
+
+.section3-text4 p:nth-child(2) {
+    font-weight: 400;
+    font-size: 12px;
+    color: #8D8D8D;
+    margin-bottom: 3px;
+}
+
+
+
+
+
+.blackZone1 {
+    position: absolute;
+    width: 1000px;
+    height: 60px;
+    opacity: 0.9;
+    top: 783px;
+    left: 108px;
+    background: black;
+    display: flex;
+    justify-content: center;
+}
+
+.blackZone11 {
+    width: 320px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 11px;
+    color: #FFFFFF;
+}
+
+.blackZone11 p:nth-child(1) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.blackZone11 p:nth-child(2) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.blackZone11 p:nth-child(3) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.blackZone11 p:nth-child(4) {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.blackZone11 p:nth-child(5) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.blackZone11 p:nth-child(6) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.blackZone11 p:nth-child(7) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+
+
+.blackZone2 {
+    position: absolute;
+    width: 768px;
+    height: 60px;
+    opacity: 0.9;
+    top: 783px;
+    left: 1233px;
+    background: black;
+    display: flex;
+    justify-content: center;
+}
+
+.blackZone21 {
+    width: 320px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 11px;
+    color: #FFFFFF;
+}
+
+.blackZone21 p:nth-child(1) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.blackZone21 p:nth-child(2) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.blackZone21 p:nth-child(3) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.blackZone21 p:nth-child(4) {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.blackZone21 p:nth-child(5) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.blackZone21 p:nth-child(6) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.blackZone21 p:nth-child(7) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+
+
+
+
+
+.blackZone3 {
+    position: absolute;
+    width: 480px;
+    height: 60px;
+    opacity: 0.9;
+    top: 783px;
+    left: 2126px;
+    background: black;
+    display: flex;
+    justify-content: center;
+}
+
+.blackZone31 {
+    width: 320px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 11px;
+    color: #FFFFFF;
+}
+
+.blackZone31 p:nth-child(1) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.blackZone31 p:nth-child(2) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.blackZone31 p:nth-child(3) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.blackZone31 p:nth-child(4) {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.blackZone31 p:nth-child(5) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.blackZone31 p:nth-child(6) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.blackZone31 p:nth-child(7) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+
+
+
+.numbers1 {
+    position: absolute;
+    width: 164px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 11px;
+    color: white;
+    top: 825px;
+    left: 400px;
+}
+
+.numbers1 p:nth-child(1) {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.numbers1 p:nth-child(2) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.numbers1 p:nth-child(3) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.numbers1 p:nth-child(4) {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.numbers1 p:nth-child(5) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+
+
+
+.numbers2 {
+    position: absolute;
+    width: 164px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 11px;
+    color: white;
+    top: 850px;
+    left: 400px;
+}
+
+.numbers2 p:nth-child(1) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.numbers2 p:nth-child(2) {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.numbers2 p:nth-child(3) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.numbers2 p:nth-child(4) {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.numbers2 p:nth-child(5) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+
+
+
+.numbers3 {
+    position: absolute;
+    width: 164px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 11px;
+    color: white;
+    top: 875px;
+    left: 400px;
+}
+
+.numbers3 p:nth-child(1) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.numbers3 p:nth-child(2) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.numbers3 p:nth-child(3) {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.numbers3 p:nth-child(4) {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.numbers3 p:nth-child(5) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.numbers3 p:nth-child(6) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+
+
+
+.numbers4 {
+    position: absolute;
+    width: 164px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 11px;
+    color: white;
+    top: 850px;
+    left: 590px;
+}
+
+.numbers4 p:nth-child(1) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.numbers4 p:nth-child(2) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.numbers4 p:nth-child(3) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.numbers4 p:nth-child(4) {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.numbers4 p:nth-child(5) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.numbers4 p:nth-child(6) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.numbers4 p:nth-child(7) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+
+
+
+.numbers5 {
+    position: absolute;
+    width: 164px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 11px;
+    color: white;
+    top: 850px;
+    left: 785px;
+}
+
+.numbers5 p:nth-child(1) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.numbers5 p:nth-child(2) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.numbers5 p:nth-child(3) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.numbers5 p:nth-child(4) {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.numbers5 p:nth-child(5) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+
+
+
+.numbers6 {
+    position: absolute;
+    width: 164px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 11px;
+    color: white;
+    top: 875px;
+    left: 785px;
+}
+
+.numbers6 p:nth-child(1) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.numbers6 p:nth-child(2) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.numbers6 p:nth-child(3) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.numbers6 p:nth-child(4) {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.numbers6 p:nth-child(5) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.numbers6 p:nth-child(6) {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+
+
+JS
+
+document.addEventListener('DOMContentLoaded', function() {
+    let currentPage = 1;
+    let totalPagesFromAPI = 1;
+    const totalPagesInDesign = 59;
+    
+    initializeApp();
+    
+    function initializeApp() {
+        hideAllNumbersBlocks();
+        loadPage(currentPage);
+        setupPaginationEventListeners();
+    }
+    
+    async function loadPage(pageNumber) {
+        try {
+            const response = await fetch(`https://rickandmortyapi.com/api/character?page=${pageNumber}`);
+            
+            const data = await response.json();
+            
+            totalPagesFromAPI = data.info.pages;
+            currentPage = pageNumber;
+            
+            const charactersToShow = data.results.slice(0, 10);
+            
+            renderSection1(charactersToShow.slice(0, 4));
+            renderSection2(charactersToShow.slice(4, 8));
+            renderSection3(charactersToShow.slice(8, 10));
+            
+            updateAllPagination();
+            
+        } catch (error) {
+
+        }
+    }
+    
+    function renderSection1(characters) {
+        if (characters.length >= 2) {
+            updateCharacterBlock('.section11', characters[0], 0);
+            updateCharacterBlock('.section11', characters[1], 1);
+        }
+        if (characters.length >= 4) {
+            updateCharacterBlock('.section12', characters[2], 0);
+            updateCharacterBlock('.section12', characters[3], 1);
+        }
+    }
+    
+    function renderSection2(characters) {
+        if (characters.length >= 2) {
+            updateCharacterBlock('.section21', characters[0], 0);
+            updateCharacterBlock('.section21', characters[1], 1);
+        }
+        if (characters.length >= 4) {
+            updateCharacterBlock('.section22', characters[2], 0);
+            updateCharacterBlock('.section22', characters[3], 1);
+        }
+    }
+    
+    function renderSection3(characters) {
+        if (characters.length >= 1) {
+            updateSingleCharacter('.section31', characters[0], true);
+        }
+        if (characters.length >= 2) {
+            updateSingleCharacter('.section32', characters[1], false);
+        }
+    }
+    
+    function updateCharacterBlock(sectionSelector, character, positionIndex) {
+        const isLeftCharacter = positionIndex === 0;
+        const blockSuffix = isLeftCharacter ? '1' : '3';
+        const statusSuffix = isLeftCharacter ? '2' : '4';
+        
+        const sectionNum = sectionSelector.includes('section1') ? '1' : 
+                          sectionSelector.includes('section2') ? '2' : '3';
+        
+        const imgSelector = `${sectionSelector} img:nth-child(${positionIndex + 1})`;
+        const nameSelector = `.section${sectionNum}${sectionSelector.slice(-1)}-text${blockSuffix} p:first-child`;
+        const genderSelector = `.section${sectionNum}${sectionSelector.slice(-1)}-text${blockSuffix} p:nth-child(2)`;
+        const statusSelector = `.section${sectionNum}${sectionSelector.slice(-1)}-text${statusSuffix} p:first-child`;
+        const locationSelector = `.section${sectionNum}${sectionSelector.slice(-1)}-text${statusSuffix} p:nth-child(2)`;
+        
+        updateElement(imgSelector, 'src', character.image);
+        updateElement(imgSelector, 'alt', character.name);
+        updateElementText(nameSelector, character.name);
+        updateElementText(genderSelector, character.gender);
+        updateElementText(statusSelector, character.status);
+        updateElementText(locationSelector, character.location.name);
+        
+        updateStatusColor(statusSelector, character.status);
+    }
+    
+    function updateSingleCharacter(sectionSelector, character, isRick) {
+        const sectionNum = '3';
+        const blockNum = sectionSelector.slice(-1);
+        const textBlock = isRick ? '1' : '3';
+        const statusBlock = isRick ? '2' : '4';
+        
+        const imgSelector = `${sectionSelector} img`;
+        const nameSelector = `.section${sectionNum}-text${textBlock} p:first-child`;
+        const genderSelector = `.section${sectionNum}-text${textBlock} p:nth-child(2)`;
+        const statusSelector = `.section${sectionNum}-text${statusBlock} p:first-child`;
+        const locationSelector = `.section${sectionNum}-text${statusBlock} p:nth-child(2)`;
+        
+        updateElement(imgSelector, 'src', character.image);
+        updateElement(imgSelector, 'alt', character.name);
+        updateElementText(nameSelector, character.name);
+        updateElementText(genderSelector, character.gender);
+        updateElementText(statusSelector, character.status);
+        updateElementText(locationSelector, character.location.name);
+        
+        updateStatusColor(statusSelector, character.status);
+    }
+    
+    function updateAllPagination() {
+        updateBlackZone('.blackZone11', currentPage);
+        updateBlackZone('.blackZone21', currentPage);
+        updateBlackZone('.blackZone31', currentPage);
+        
+        updateNumbersVisibility(currentPage);
+    }
+    
+    function updateBlackZone(selector, currentPage) {
+        const container = document.querySelector(selector);
+        if (!container) return;
+        
+        const pageElements = container.querySelectorAll('p');
+        if (pageElements.length < 7) return;
+        
+        const totalPages = Math.min(totalPagesFromAPI, totalPagesInDesign);
+        
+        let pagesToShow = [];
+        
+        if (currentPage <= 3) {
+            pagesToShow = [1, 2, 3, 4, 5, 6, totalPages];
+        } else if (currentPage >= totalPages - 2) {
+            pagesToShow = [1, '...', totalPages-5, totalPages-4, totalPages-3, totalPages-2, totalPages];
+        } else {
+            pagesToShow = [1, '...', currentPage-1, currentPage, currentPage+1, '...', totalPages];
+        }
+        
+        pageElements.forEach((element, index) => {
+            if (index < pagesToShow.length) {
+                element.textContent = pagesToShow[index];
+                
+                if (pagesToShow[index] === currentPage) {
+                    element.style.fontWeight = '700';
+                    element.style.fontSize = '18px';
+                } else {
+                    element.style.fontWeight = '400';
+                    element.style.fontSize = '14px';
+                }
+                
+                if (pagesToShow[index] === '...') {
+                    element.style.cursor = 'default';
+                } else {
+                    element.style.cursor = 'pointer';
+                }
+            }
+        });
+    }
+    
+    function updateNumbersVisibility(currentPage) {
+        hideAllNumbersBlocks();
+        
+        let selectorToShow = '';
+        
+        if (currentPage === 1) {
+            selectorToShow = '.numbers1';
+        } else if (currentPage === 2) {
+            selectorToShow = '.numbers2';
+        } else if (currentPage === 3) {
+            selectorToShow = '.numbers3';
+        } else if (currentPage >= 4 && currentPage <= 56) {
+            selectorToShow = '.numbers4';
+        } else if (currentPage === 57) {
+            selectorToShow = '.numbers5';
+        } else if (currentPage >= 58) {
+            selectorToShow = '.numbers6';
+        }
+        
+        if (selectorToShow) {
+            const element = document.querySelector(selectorToShow);
+            if (element) {
+                element.style.display = 'flex';
+                
+                const pageElements = element.querySelectorAll('p');
+                pageElements.forEach(p => {
+                    const pageNum = parseInt(p.textContent);
+                    if (!isNaN(pageNum)) {
+                        if (pageNum === currentPage) {
+                            p.style.fontWeight = '700';
+                            p.style.fontSize = '18px';
+                        } else {
+                            p.style.fontWeight = '400';
+                            p.style.fontSize = '14px';
+                        }
+                        p.style.cursor = 'pointer';
+                    }
+                });
+            }
+        }
+    }
+    
+    function setupPaginationEventListeners() {
+        setupBlackZoneListeners('.blackZone11');
+        setupBlackZoneListeners('.blackZone21');
+        setupBlackZoneListeners('.blackZone31');
+        
+        setupNumbersListeners('.numbers1');
+        setupNumbersListeners('.numbers2');
+        setupNumbersListeners('.numbers3');
+        setupNumbersListeners('.numbers4');
+        setupNumbersListeners('.numbers5');
+        setupNumbersListeners('.numbers6');
+    }
+    
+    function setupBlackZoneListeners(selector) {
+        const container = document.querySelector(selector);
+        if (!container) return;
+        
+        container.querySelectorAll('p').forEach(p => {
+            p.addEventListener('click', function() {
+                const text = this.textContent;
+                if (text !== '...' && !isNaN(text)) {
+                    const pageNum = parseInt(text);
+                    if (pageNum >= 1 && pageNum <= totalPagesInDesign) {
+                        loadPage(pageNum);
+                    }
+                }
+            });
+        });
+    }
+    
+    function setupNumbersListeners(selector) {
+        const container = document.querySelector(selector);
+        if (!container) return;
+        
+        container.querySelectorAll('p').forEach(p => {
+            p.addEventListener('click', function() {
+                const text = this.textContent;
+                if (text !== '...' && !isNaN(text)) {
+                    const pageNum = parseInt(text);
+                    if (pageNum >= 1 && pageNum <= totalPagesInDesign) {
+                        loadPage(pageNum);
+                    }
+                }
+            });
+        });
+    }
+    
+    function hideAllNumbersBlocks() {
+        for (let i = 1; i <= 6; i++) {
+            const element = document.querySelector(`.numbers${i}`);
+            if (element) {
+                element.style.display = 'none';
+            }
+        }
+    }
+    
+    function updateElement(selector, attribute, value) {
+        const element = document.querySelector(selector);
+        if (element) {
+            element[attribute] = value;
+        }
+    }
+    
+    function updateElementText(selector, text) {
+        const element = document.querySelector(selector);
+        if (element) {
+            element.textContent = text;
+        }
+    }
+    
+    function updateStatusColor(selector, status) {
+        const element = document.querySelector(selector);
+        if (element) {
+            if (status === 'Alive') {
+                element.style.color = '#00BD4C';
+            } else if (status === 'Dead') {
+                element.style.color = '#E60000';
+            } else {
+                element.style.color = '#7B7B7B';
+            }
+        }
+    }
+});
